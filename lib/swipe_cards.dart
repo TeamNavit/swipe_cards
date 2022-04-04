@@ -12,6 +12,9 @@ class SwipeCards extends StatefulWidget {
   Function(SwipeItem, int)? itemChanged;
   final bool fillSpace;
   final bool upSwipeAllowed;
+  final double leftRegionTolerance;
+  final double rightRegionTolerance;
+  final double topRegionTolerance;
 
   SwipeCards({
     Key? key,
@@ -21,6 +24,9 @@ class SwipeCards extends StatefulWidget {
     this.fillSpace = true,
     this.upSwipeAllowed = false,
     this.itemChanged,
+    this.leftRegionTolerance = -0.45,
+    this.rightRegionTolerance = 0.45,
+    this.topRegionTolerance = -0.40,
   }) : super(key: key);
 
   @override
@@ -179,6 +185,9 @@ class _SwipeCardsState extends State<SwipeCards> {
             onSlideOutComplete: _onSlideOutComplete,
             upSwipeAllowed: widget.upSwipeAllowed,
             isBackCard: false,
+            rightRegionTolerance: widget.rightRegionTolerance,
+            leftRegionTolerance: widget.leftRegionTolerance,
+            topRegionTolerance: widget.topRegionTolerance,
           )
       ],
     );

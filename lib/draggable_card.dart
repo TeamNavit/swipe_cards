@@ -16,6 +16,9 @@ class DraggableCard extends StatefulWidget {
   final bool upSwipeAllowed;
   final EdgeInsets padding;
   final bool isBackCard;
+  final double leftRegionTolerance;
+  final double rightRegionTolerance;
+  final double topRegionTolerance;
 
   DraggableCard(
       {this.card,
@@ -26,6 +29,9 @@ class DraggableCard extends StatefulWidget {
       this.onSlideRegionUpdate,
       this.upSwipeAllowed = true,
       this.isBackCard = false,
+      this.leftRegionTolerance = -0.45,
+      this.rightRegionTolerance = 0.45,
+      this.topRegionTolerance = -0.40,
       this.padding = EdgeInsets.zero});
 
   @override
@@ -193,9 +199,12 @@ class _DraggableCardState extends State<DraggableCard>
   }
 
   void _onPanUpdate(DragUpdateDetails details) {
-    final isInLeftRegion = (cardOffset!.dx / context.size!.width) < -0.45;
-    final isInRightRegion = (cardOffset!.dx / context.size!.width) > 0.45;
-    final isInTopRegion = (cardOffset!.dy / context.size!.height) < -0.40;
+    final isInLeftRegion =
+        (cardOffset!.dx / context.size!.width) < widget.leftRegionTolerance;
+    final isInRightRegion =
+        (cardOffset!.dx / context.size!.width) > widget.rightRegionTolerance;
+    final isInTopRegion =
+        (cardOffset!.dy / context.size!.height) < widget.topRegionTolerance;
 
     setState(() {
       if (isInLeftRegion || isInRightRegion) {

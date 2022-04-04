@@ -39,6 +39,9 @@ SwipeCards(
 | `itemChanged`     |  A function that is triggered when item in the stack changes (moves to next card).    |
 | `upSwipeAllowed`  |  To enable/disable up swipe. (Default: false)    |
 | `fillSpace`       |  Config weather to fill up the space or not. (Default: true)    |
+| `leftRegionTolerance`       |  Offset percent of screen width where we first detect the left region. (Default: -0.45)    |
+| `rightRegionTolerance`       |  Offset percent of screen width where we first detect the left region. (Default: 0.45)    |
+| `topRegionTolerance`       |  Offset percent of screen width where we first detect the left region. (Default: -0.40)    |
 
 ### MatchEngine
 
